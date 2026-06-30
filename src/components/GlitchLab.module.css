@@ -1,0 +1,171 @@
+.section {
+  padding: 80px 24px;
+  max-width: 1024px;
+  margin: 0 auto;
+  border-top: 1px solid #f3f4f6;
+}
+
+.heading {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9ca3af;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid #f3f4f6;
+  border-radius: 16px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.desc {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  outline: none;
+  color: #111111;
+  background: #ffffff;
+}
+
+.btn {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ── 1. Shake ── */
+.shake:focus {
+  border-color: #00e5ff;
+  animation: shake 0.35s steps(1) 1;
+}
+
+.shakeBtn:active {
+  animation: shake 0.35s steps(1) 1;
+}
+
+@keyframes shake {
+  0%   { transform: translateX(-5px); }
+  15%  { transform: translateX(5px); }
+  30%  { transform: translateX(-4px); }
+  45%  { transform: translateX(4px); }
+  60%  { transform: translateX(-2px); }
+  75%  { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+/* ── 2. Scanline ── */
+.scanline {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.scanline:focus {
+  border-color: #ff6b47;
+  animation: scanline 0.4s ease-out 1;
+}
+
+.scanlineBtn:active {
+  animation: scanlineBg 0.4s ease-out 1;
+}
+
+@keyframes scanline {
+  0%   { box-shadow: inset 0 -100% 0 0 rgba(255, 107, 71, 0.15); }
+  100% { box-shadow: inset 0 0 0 0 rgba(255, 107, 71, 0); }
+}
+
+@keyframes scanlineBg {
+  0%   { box-shadow: inset 0 -100% 0 0 rgba(0, 229, 255, 0.2); }
+  100% { box-shadow: inset 0 0 0 0 rgba(0, 229, 255, 0); }
+}
+
+/* ── 3. Flicker ── */
+.flicker:focus {
+  border-color: #00e5ff;
+  animation: flicker 0.4s steps(1) 1;
+}
+
+.flickerBtn:active {
+  animation: flickerBtn 0.4s steps(1) 1;
+}
+
+@keyframes flicker {
+  0%   { background: #0a1628; color: #fff; }
+  10%  { background: #ffffff; color: #111; }
+  20%  { background: #0a1628; color: #fff; }
+  30%  { background: #ffffff; color: #111; }
+  40%  { background: #0a1628; color: #fff; }
+  55%  { background: #ffffff; color: #111; }
+  65%  { background: #f0feff; }
+  100% { background: #ffffff; color: #111; }
+}
+
+@keyframes flickerBtn {
+  0%   { background: #00e5ff; color: #111; }
+  15%  { background: #111111; color: #fff; }
+  30%  { background: #00e5ff; color: #111; }
+  50%  { background: #111111; color: #fff; }
+  70%  { background: #0a1628; color: #fff; }
+  100% { background: #111111; color: #fff; }
+}
+
+/* ── 4. Border Stutter ── */
+.stutter:focus {
+  animation: stutterBorder 0.45s steps(1) 1 forwards;
+}
+
+.stutterBtn:active {
+  animation: stutterBtnBorder 0.45s steps(1) 1;
+}
+
+@keyframes stutterBorder {
+  0%   { border-color: #ff2d55; border-width: 3px; }
+  15%  { border-color: #00e5ff; border-width: 1px; }
+  30%  { border-color: #ff6b47; border-width: 4px; }
+  45%  { border-color: #0a1628; border-width: 2px; }
+  60%  { border-color: #ff2d55; border-width: 1px; }
+  75%  { border-color: #00e5ff; border-width: 3px; }
+  90%  { border-color: #ff6b47; border-width: 1px; }
+  100% { border-color: #00e5ff; border-width: 1px; }
+}
+
+@keyframes stutterBtnBorder {
+  0%   { box-shadow: 0 0 0 3px #ff2d55; }
+  15%  { box-shadow: 0 0 0 1px #00e5ff; }
+  30%  { box-shadow: 0 0 0 4px #ff6b47; }
+  45%  { box-shadow: 0 0 0 2px #0a1628; }
+  60%  { box-shadow: 0 0 0 1px #ff2d55; }
+  75%  { box-shadow: 0 0 0 3px #00e5ff; }
+  90%  { box-shadow: 0 0 0 1px #ff6b47; }
+  100% { box-shadow: none; }
+}

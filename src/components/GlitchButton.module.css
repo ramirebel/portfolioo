@@ -1,0 +1,145 @@
+.button {
+  position: relative;
+  align-self: flex-start;
+  padding: 12px 24px;
+  background-color: #111111;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.small {
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 6px;
+}
+
+.small .borderBox,
+.small .bbg {
+  border-radius: 6px;
+}
+
+.small .fillFlash {
+  border-radius: 6px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Static border overlay */
+.borderBox {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* RGB ghost borders */
+.bbg {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bbgRed  { border-color: #ff003c; }
+.bbgCyan { border-color: #00ffcc; }
+
+/* Fill flash */
+.fillFlash {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+/* RGB text ghosts */
+.textGhost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.textGhostRed  { color: #ff003c; }
+.textGhostCyan { color: #00ffcc; }
+
+.label {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glitching state */
+.glitching .borderBox {
+  animation: borderRattle 0.38s steps(7) forwards;
+}
+
+.glitching .bbgRed {
+  animation: rgbRed 0.38s steps(4) forwards;
+}
+
+.glitching .bbgCyan {
+  animation: rgbCyan 0.38s steps(4) forwards;
+}
+
+.glitching .fillFlash {
+  animation: fillFlash 0.38s steps(3) forwards;
+}
+
+.glitching .textGhostRed {
+  animation: rgbRed 0.38s steps(4) forwards;
+}
+
+.glitching .textGhostCyan {
+  animation: rgbCyan 0.38s steps(4) forwards;
+}
+
+@keyframes borderRattle {
+  0%   { transform: translateX(0);    opacity: 1; }
+  14%  { transform: translateX(-5px); opacity: 0.6; }
+  28%  { transform: translateX(6px);  opacity: 0.9; }
+  42%  { transform: translateX(-4px); opacity: 0.7; }
+  57%  { transform: translateX(3px);  opacity: 1; }
+  71%  { transform: translateX(-2px); opacity: 0.8; }
+  85%  { transform: translateX(1px);  opacity: 1; }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes rgbRed {
+  0%   { transform: translateX(-6px); opacity: 0.7; clip-path: inset(10% 0 50% 0); }
+  33%  { transform: translateX(-9px); opacity: 0.4; clip-path: inset(60% 0 5% 0);  }
+  66%  { transform: translateX(-4px); opacity: 0.2; clip-path: inset(30% 0 35% 0); }
+  100% { transform: translateX(0);    opacity: 0; }
+}
+
+@keyframes rgbCyan {
+  0%   { transform: translateX(6px);  opacity: 0.7; clip-path: inset(55% 0 5% 0);  }
+  33%  { transform: translateX(9px);  opacity: 0.4; clip-path: inset(5% 0 60% 0);  }
+  66%  { transform: translateX(4px);  opacity: 0.2; clip-path: inset(35% 0 30% 0); }
+  100% { transform: translateX(0);    opacity: 0; }
+}
+
+@keyframes fillFlash {
+  0%   { opacity: 0; }
+  20%  { opacity: 0.12; }
+  40%  { opacity: 0; }
+  60%  { opacity: 0.07; }
+  100% { opacity: 0; }
+}

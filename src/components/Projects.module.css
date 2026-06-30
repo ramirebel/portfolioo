@@ -1,0 +1,218 @@
+.section {
+  padding: 80px 24px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #111111;
+}
+
+.viewAll {
+  font-size: 14px;
+  color: #9ca3af;
+  transition: color 0.2s;
+}
+
+.viewAll:hover {
+  color: #111111;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  display: block;
+  cursor: pointer;
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background-color: #f3f4f6;
+}
+
+.thumbnailInner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .thumbnailInner {
+  transform: scale(1.04);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.cardTitle::before,
+.cardTitle::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cardTitle::before { color: #00e5ff; filter: blur(1px); }
+.cardTitle::after  { color: #e8001a; filter: blur(0.5px); }
+
+.card:hover .cardTitle::before {
+  opacity: 0.75;
+  animation: glitchTop 0.4s steps(1) infinite;
+}
+
+.card:hover .cardTitle::after {
+  opacity: 0.75;
+  animation: glitchBot 0.4s steps(1) infinite;
+}
+
+@keyframes glitchTop {
+  0%   { transform: translateX(-3px); clip-path: inset(0 0 65% 0); }
+  33%  { transform: translateX(2px);  clip-path: inset(45% 0 35% 0); }
+  66%  { transform: translateX(-1px); clip-path: inset(75% 0 5% 0); }
+  100% { transform: translateX(0);    clip-path: inset(20% 0 55% 0); }
+}
+
+@keyframes glitchBot {
+  0%   { transform: translateX(3px);  clip-path: inset(55% 0 25% 0); }
+  33%  { transform: translateX(-2px); clip-path: inset(5% 0 75% 0); }
+  66%  { transform: translateX(1px);  clip-path: inset(85% 0 5% 0); }
+  100% { transform: translateX(0);    clip-path: inset(35% 0 45% 0); }
+}
+
+.arrow {
+  font-size: 14px;
+  color: #d1d5db;
+  transition: color 0.2s;
+  display: inline-block;
+  position: relative;
+}
+
+.arrow::before,
+.arrow::after {
+  content: '↗';
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.arrow::before {
+  color: #00e5ff;
+  filter: blur(1px);
+}
+
+.arrow::after {
+  color: #ff2d55;
+  filter: blur(0.5px);
+}
+
+.card:hover .arrow {
+  color: #111111;
+}
+
+.card:hover .arrow::before {
+  opacity: 0.9;
+  animation: arrowCyan 0.35s steps(1) infinite;
+}
+
+.card:hover .arrow::after {
+  opacity: 0.8;
+  animation: arrowRed 0.35s steps(1) infinite;
+}
+
+@keyframes arrowCyan {
+  0%   { transform: translateX(-3px) translateY(2px); }
+  33%  { transform: translateX(2px)  translateY(-2px); }
+  66%  { transform: translateX(-4px) translateY(1px); }
+  100% { transform: translateX(1px)  translateY(-3px); }
+}
+
+@keyframes arrowRed {
+  0%   { transform: translateX(3px)  translateY(-2px); }
+  33%  { transform: translateX(-2px) translateY(2px); }
+  66%  { transform: translateX(4px)  translateY(-1px); }
+  100% { transform: translateX(-1px) translateY(3px); }
+}
+
+.description {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+  background: #f3f4f6;
+  border-radius: 6px;
+  padding: 3px 8px;
+  letter-spacing: 0.02em;
+}
+
+.githubTag {
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #111111;
+  border-radius: 6px;
+  padding: 3px 8px;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
