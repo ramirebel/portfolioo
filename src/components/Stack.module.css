@@ -16,49 +16,90 @@
 .subtitle {
   font-size: 14px;
   color: #9ca3af;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.category {
+  display: flex;
+  align-items: flex-start;
   gap: 24px;
 }
 
-.item {
+.categoryLabel {
+  flex-shrink: 0;
+  width: 130px;
+  padding-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.items {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  display: flex;
   align-items: center;
   gap: 8px;
+  padding: 6px 14px 6px 10px;
+  background-color: #f9fafb;
+  border-radius: 999px;
+  border: 1px solid #f3f4f6;
+  transition: background-color 0.15s, border-color 0.15s;
+  cursor: default;
 }
 
-.iconWrap {
-  width: 52px;
-  height: 52px;
+.pill:hover {
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+}
+
+.pillName {
+  font-size: 13px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.badgePill {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 12px;
+  padding: 6px 14px;
   background-color: #f9fafb;
-  transition: background-color 0.2s;
+  border-radius: 999px;
+  border: 1px solid #f3f4f6;
+  cursor: default;
 }
 
-.item:hover .iconWrap {
+.badgePill:hover {
   background-color: #f3f4f6;
+  border-color: #e5e7eb;
 }
 
-.iconWrap i {
-  font-size: 26px;
-}
-
-.name {
-  font-size: 11px;
-  color: #9ca3af;
-  text-align: center;
+.badgeText {
+  font-size: 13px;
+  color: #374151;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+  .category {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .categoryLabel {
+    width: auto;
+    padding-top: 0;
   }
 }
